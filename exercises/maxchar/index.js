@@ -7,6 +7,7 @@
 
 function maxChar(str) {
     const charMap = {};
+    const mostCommonCharacter = {'character': '', 'count': 0}
 
     for(const char of str) {
         if(!charMap[char]) {
@@ -14,15 +15,26 @@ function maxChar(str) {
         }else {
             charMap[char] += 1;
         }
+
+        if (charMap[char] > mostCommonCharacter.count) {
+            mostCommonCharacter.count = charMap[char];
+            mostCommonCharacter.character = char;
+        }
     }
 
-    return Object.entries(charMap).reduce((acc, [character, count]) => {
-        if(count > acc.count) {
-            acc.character = character;
-            acc.count = count;
-        }
-        return acc;
-    }, {'character': '', 'count': 0}).character
+    return mostCommonCharacter.character;
+
+    // return Object.entries(charMap).reduce((acc, [character, count]) => {
+    //     if(count > acc.count) {
+    //         acc.character = character;
+    //         acc.count = count;
+    //     }
+    //     return acc;
+    // }, {'character': '', 'count': 0}).character
+}
+
+function maxChar2(str) {
+
 }
 
 console.log('maxChar("abcccccccd") === "c"', maxChar("abcccccccd") === "c");
