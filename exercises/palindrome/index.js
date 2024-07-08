@@ -9,10 +9,20 @@
 
 function palindrome(str) {
     const reversed = str.split('').reverse().join('');
-    return str == reversed;
+    return str === reversed;
+}
+
+function palindrome2(str) {
+    return str.split('').every((character, index) => {
+        return character === str[str.length - index - 1]
+    })
 }
 
 console.log('abba', palindrome('abba'));
 console.log('abcdefg', palindrome('abcdefg'));
+
+console.log('abba', palindrome2('abba'));
+console.log('abcba', palindrome2('abcba'));
+console.log('abcdefg', palindrome2('abcdefg'));
 
 module.exports = palindrome;
