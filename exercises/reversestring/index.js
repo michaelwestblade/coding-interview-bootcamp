@@ -55,8 +55,7 @@ function reverse3(str) {
  */
 function reverse4(str) {
     return str.split('').reduce((reversedString, character) => {
-        reversedString = character + reversedString;
-        return reversedString;
+        return character + reversedString;
     }, '');
 }
 
