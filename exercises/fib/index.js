@@ -8,6 +8,26 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+const memo = {};
+
+function fibWithMemo(n) {
+    if (n <= 1) {
+        return n
+    }
+
+    if (!memo[n]) {
+        memo[n] = fib(n - 1) + fib(n - 2);
+    }
+
+    return memo[n]
+}
+
+function fib(n) {
+    if (n < 2) {
+        return n;
+    }
+
+    return fib(n - 1) + fib(n - 2);
+}
 
 module.exports = fib;
